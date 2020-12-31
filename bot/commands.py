@@ -30,4 +30,8 @@ def tomorrow(message):
 
 @bot.message_handler(content_types=['text'])
 def translate(message):
-    eval(FUNCS.get(message.text))
+    func = FUNCS.get(message.text)
+    if func is None:
+        pass
+    else:
+        eval(func)
