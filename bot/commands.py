@@ -31,7 +31,7 @@ def tomorrow(message):
 @bot.message_handler(content_types=['text'])
 def translate(message):
     func = FUNCS.get(message.text)
-    if func is None:
-        pass
-    else:
+    if func is not None:
         eval(func)
+    else:
+        bot.delete_message(message.chat.id, message.id)
